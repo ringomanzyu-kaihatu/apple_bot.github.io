@@ -1,0 +1,100 @@
+/* my-page-transition-effect.css */
+
+/* bodyにoverflow: hidden; を適用して、エフェクト中のはみ出しを防ぎます */
+body {
+    overflow: hidden;
+    /* ページロード時のアニメーションはJavaScriptでクラスを付与して制御するため、ここから削除 */
+    /* animation: animate_in 1s ease; */ /* この行は削除またはコメントアウト */
+}
+
+/* ページロード時のアニメーションを適用するためのクラス */
+/* stylesheet.css にある @keyframes animate_in を参照します */
+body.initial-load-animation {
+    animation: animate_in 1s ease; /* ページロード時に電源が入るようなアニメーション */
+}
+
+
+/* --- ブラウン管オフエフェクトのオーバーレイ --- */
+#scanline-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw; /* ビューポートの幅いっぱいに */
+    height: 100vh; /* ビューポートの高さっぱいに */
+    background-color: transparent; /* 通常時は透明 */
+    pointer-events: none; /* 通常時はクリックイベントを透過 */
+    opacity: 0; /* 通常時は非表示 */
+    z-index: 9999; /* 最前面に表示 */
+}
+
+/* オーバーレイがアクティブになったら表示 */
+#scanline-overlay.active {
+    opacity: 1;
+    background-color: black; /* 画面全体を黒くする */
+    pointer-events: auto; /* エフェクト中はクリックを無効化 */
+}
+
+/* ブラウン管オフの収束線 */
+.crt-off-line {
+    position: absolute;
+    top: 50%; /* 垂直方向の中央 */
+    left: 0;
+    width: 100%;
+    height: 2px; /* 線の太さ */
+    background-color: white; /* 線の色 */
+    box-shadow: 0 0 10px white, 0 0 20px white; /* 光る効果 */
+    transform: scaleX(0); /* 最初は非表示（幅0） */
+    transform-origin: center center; /* 中央を基準に拡大縮小 */
+    opacity: 0;
+}
+
+/* アクティブ時にアニメーション */
+#scanline-overlay.active .crt-off-line {
+    opacity: 1;
+    animation:
+        crt-shrink 0.6s ease-out forwards, /* 収縮アニメーション */
+        crt-flicker 0.1s infinite alternate; /* (任意) 明滅アニメーション */
+}
+
+/* ブラウン管収縮アニメーション */
+@keyframes crt-shrink {
+    0% { transform: scaleX(1); opacity: 1; } /* 画面いっぱいに表示 */
+    70% { transform: scaleX(0.01); opacity: 1; } /* 中央に収縮（非常に細い線に） */
+    100% { transform: scaleX(0); opacity: 0; } /* 完全に消える */
+}
+
+/* 収縮中の明滅アニメーション (任意) */
+@keyframes crt-flicker {
+    0% { opacity: 1; box-shadow: 0 0 10px white, 0 0 20px white; }
+    50% { opacity: 0.8; box-shadow: 0 0 5px white, 0 0 15px white; }
+    100% { opacity: 1; box-shadow: 0 0 10px white, 0 0 20px white; }
+}
+
+/* --- (任意) 走査線ノイズを組み合わせる場合 --- */
+/* .moving-scanline {
+    position: absolute;
+    top: -10%;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(to right, transparent, rgba(0, 255, 0, 0.2), transparent);
+    box-shadow: 0 0 2px rgba(0, 255, 0, 0.1);
+    opacity: 0;
+}
+
+#scanline-overlay.active .moving-scanline {
+    opacity: 1;
+    animation:
+        move-scanline 0.5s linear infinite,
+        flicker-scanline 0.05s infinite alternate;
+}
+
+@keyframes move-scanline {
+    0% { top: -10%; }
+    100% { top: 110%; }
+}
+
+@keyframes flicker-scanline {
+    0% { opacity: 0.1; }
+    100% { opacity: 0.2; }
+} */

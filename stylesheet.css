@@ -1,0 +1,126 @@
+body {
+    background-color: rgba(0, 0, 0, 0.396);
+
+    /* この行を削除してください: */
+    /* animation: animate_in 1s ease; */
+}
+
+@keyframes animate_in {
+    0% {
+        transform: scale(0.2, 0.01);
+        opacity: 0;
+    }
+    70% {
+        transform: scale(1, 0.01);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(1, 1);
+    }
+}
+
+.header {
+    background-color: rgb(27, 65, 115);
+}
+.menu {
+    display: flex;
+    list-style: none;
+    color: white;
+    height: 60px;
+}
+.menu li {
+    margin-left: 1em;
+    margin-right: 1em;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+.menu a {
+    background: #eee;
+    border-radius: 3px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    max-width: 220px;
+    padding: 10px 25px;
+    color: #313131;
+    transition: 0.3s;
+}
+.menu a:hover {
+    box-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff;
+    color: #fff;
+    text-decoration: none;
+}
+.menu a span {
+    position: relative;
+    z-index: 2; /* テキストを前面に */
+    color: #313131; /* デフォルトの文字色 */
+    transition: color 0.3s ease;
+}
+.menu a:hover span {
+    color: #fff; /* ホバー時の文字色 */
+}
+
+.main {
+    text-align: center;
+    padding: 20px;
+    color: #fff; /* メインコンテンツの文字色 */
+}
+
+h1, h2 {
+    color: #fff; /* 見出しの文字色 */
+}
+
+
+
+    
+
+.header {
+    background-color: rgb(27, 65, 115);
+}
+.menu {
+    display: flex;
+    list-style: none;
+    color: white;
+    height: 60px;
+}
+.menu li {
+    margin-left: 1em;
+    margin-right: 1em;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+.menu a {
+    background: #eee;
+    border-radius: 3px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    max-width: 220px;
+    padding: 10px 25px;
+    color: #313131;
+    transition: 0.3s ease-in-out;
+    font-weight: 500;
+    height: 20px;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+.menu a:before {
+
+    position: relative;
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    margin-right: 8px;
+    color: #999;
+}
+
+.menu a:hover {
+    background: #313131;
+    color: #FFF;
+}
+.main {
+    color: beige;
+}
